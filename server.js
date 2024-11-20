@@ -1,11 +1,28 @@
 const express = require('express');
 const app = express();
+const cors = require("cors"); //deciding what domains are acceptable.
 
 app.use(express.static('./public'));
-const expressServer = app.listen(4000);
+
+// use the port environment variable provided by render
+const PORT = process.env.PORT || 4000;
+
+const allowedOrigins = [
+    "http://localhost:4000",
+    "https://chat-room-xyan.onrender.com/"
+];
+
+app.use(cors({
+    origin: allowedOrigins
+}));
+
+const expressServer = app.listen(PORT);
 
 const socketio = require('socket.io');
 const io = socketio(expressServer, {
+    cors: {
+        origin: allowedOrigins
+    }
     //cors
     //auth
     //query
