@@ -7,9 +7,15 @@
 </head>
 <body>
     <div>
-        <h1>Hey there!</h1>
+        <form id = "formInput">
+            <input id="messageInput" type="text" placeholder="Enter chat message">
+            <input type="submit" value="Submit">
+        </form>
     </div>
     
+    <div>
+        <ul id="messages"></ul>
+    </div>
     <script src="https://cdn.socket.io/4.7.1/socket.io.min.js"></script>
     <script src="script.js"></script>
 </body>
